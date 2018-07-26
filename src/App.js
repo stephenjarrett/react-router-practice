@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import {Route, Link} from 'react-router-dom';
+import Navbar from './Navbar.js';
 
 class App extends Component {
 	render() {
@@ -11,18 +12,15 @@ class App extends Component {
 			<img src={logo} className="App-logo" alt="logo" />
 			<h1 className="App-title">Welcome to React</h1>
 			</header>
+
+			<Navbar />
 			
-			<ul>
-				<li> <Link to="/">Landing</Link> </li>
-				<li> <Link to="/home">Home</Link> </li>
-				<li> <Link to="/about">About</Link> </li>
-				<li> <Link to="/njoy">Njoy</Link> </li>
-			</ul>
+		
 			
 			<Route path="/" exact={true} component={Landing} /> 
-			<Route path="/home" component={Home} /> 
-			<Route path="/about" component={About} /> 
-			<Route path="/njoy" component={Njoy} /> 
+			<Route path="/Home" component={Home} /> 
+			<Route path="/About" component={About} /> 
+			<Route path="/Njoy" component={Njoy} /> 
 
 		</div>
 		);
