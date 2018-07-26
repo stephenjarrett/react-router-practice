@@ -18,9 +18,10 @@ class App extends Component {
 		
 			
 			<Route path="/" exact={true} component={Landing} /> 
-			<Route path="/Home" component={Home} /> 
-			<Route path="/About" component={About} /> 
-			<Route path="/Njoy" component={Njoy} /> 
+			<Route path="/home" component={Home} /> 
+			<Route path="/about" component={About} /> 
+			<Route path="/cats" component={Cats} /> 
+			<Route path="/cats/:cat" component={SpecificCat} /> 
 
 		</div>
 		);
@@ -51,10 +52,34 @@ const About = (props) => {
 	);
 }
 
-const Njoy = (props) => {
+const formatAsLink = (toUrl,name) => {
+	return <li><Link to={`${toUrl}/${name}`}>{name}</Link></li>
+}
+
+const Cats = (props) => {
+
+	let allCats = [
+		'Bernie',
+		'Ernie',
+		'Hank'
+	];
+
 	return (
 		<div>
-			<h1>Let's Njoy</h1>
+			<h1>Njoy Cats</h1>
+			<ul>
+				{allCats.map(cat => formatAsLink(props.match.url, cat))}
+			</ul>
+		</div>
+	);
+}
+
+const SpecificCat = (props) => {
+	console.log(props);
+	return (
+		<div>
+			<h1>It's a specific cat..</h1>
+			<h2>{props.match.params.cat}</h2>
 		</div>
 	);
 }
